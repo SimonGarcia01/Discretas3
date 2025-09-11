@@ -1,0 +1,75 @@
+ClassDiagram:
+	objects *= Object '<>' relation *= Relation 
+;
+
+Object:
+	Class | Enum | Interface
+;
+
+Class:
+	classDef = UpName ':::' Attributes '***' Methods
+;
+
+Enum:
+	enumDef = UpName '\L/' Literals
+;
+
+Interface:
+	interfaceDef = UpName 'Abstract Methods:' Methods
+;
+
+UpName:
+	uppercaseName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Attributes:
+	attributes *= Visibility LowName
+;
+
+LowName:
+	LiteralLowercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Visibility:
+	'+'|'-'|'#'
+;
+
+LiteralUppercase:
+	[A-Z]
+;
+
+LiteralLowercase:
+	[a-z]
+;
+
+Methods:
+	methods *= Visibility LowName '(' Parameters? ')' ':' Return
+;
+
+Parameters:
+	parameters *= BASETYPE LiteralLowercase (',' BASETYPE LowName)*
+;
+
+Return:
+	return = BASETYPE
+;
+
+Literals:
+	literal *= LiteralUppercase [',']
+;
+
+Relation:
+	start = [Class]
+	startMultiplicity = Multiplicity
+	type = RelationType
+	endMultiplicity = Multiplicity
+	end = [Class]
+;
+
+RelationType:
+	'--->' | '<---' | '---' | '<>---' | '---<>' | '<*>---' | '---<*>' 
+;
+
+Multiplicity:
+	0..* | 1..* | 1
+;
