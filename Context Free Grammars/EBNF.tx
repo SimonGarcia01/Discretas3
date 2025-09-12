@@ -1,0 +1,147 @@
+ClassDiagram:
+	objects *= Object '<>' relation *= Relation 
+;
+
+Object:
+	objectType = (Class | Enum | Interface)
+;
+
+Class:
+	classDef = UpName ':::' Attributes '***' Methods
+;
+
+Enum:
+	enumDef = UpName '\L/' Literals
+;
+
+Interface:
+	interfaceDef = UpName 'Abstract Methods:' Methods
+;
+
+UpName:
+	upName = uppercaseName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Attributes:
+	attributes *= Visibility LowName
+;
+
+LowName:
+	lowName = LiteralLowercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Visibility:
+	visibility = ('+'|'-'|'#')
+;
+
+LiteralUppercase:
+	upperliterals = [A-Z]
+;
+
+LiteralLowercase:
+	lowerLiterals = [a-z]
+;
+
+Methods:
+	methods *= Visibility LowName '(' Parameters? ')' ':' Return
+;
+
+Parameters:
+	parameters *= DataType LowName (',' DataType LowName)*
+;
+
+DataType:
+	datatype = (int | String | double | long | float | char)
+;
+
+Return:
+	return = DataType
+;
+
+Literals:
+	literal *= LiteralUppercase [',']
+;
+
+Relation:
+	start = [Class]
+	startMultiplicity = Multiplicity
+	type = RelationType
+	endMultiplicity = Multiplicity
+	end = [Class]
+;
+
+RelationType:
+	relations = ('--->' | '---' | '---<>' | '---<*>')
+;
+
+Multiplicity:
+	multiplicities = (0..* | 1..* | 1)
+;
+
+ClassDiagram:
+	objects *= Object '<>' relation *= Relation 
+;
+
+Object:
+	objectType = Class
+;
+
+Class:
+	classDef = UpName ':::' Attributes '***' Methods
+;
+
+UpName:
+	upName = uppercaseName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Attributes:
+	attributes *= Visibility LowName
+;
+
+Methods:
+	methods *= Visibility LowName '(' Parameters? ')' ':' Return
+;
+
+LiteralUppercase:
+	upperliterals = [A-Z]
+;
+
+LiteralLowercase:
+	lowerLiterals = [a-z]
+;
+
+Visibility:
+	visibility = ('+'|'-'|'#')
+;
+
+LowName:
+	lowName = LiteralLowercase (LiteralLowercase|LiteralUppercase)*
+;
+
+Parameters:
+	parameters *= DataType LowName (',' DataType LowName)*
+;
+
+Return:
+	return = DataType
+;
+
+DataType:
+	datatype = (int | String | double | long | float | char)
+;
+
+Relation:
+	start = [Class]
+	startMultiplicity = Multiplicity
+	type = RelationType
+	endMultiplicity = Multiplicity
+	end = [Class]
+;
+
+RelationType:
+	relations = ('--->' | '---' | '---<>' | '---<*>')
+;
+
+Multiplicity:
+	multiplicities = (0..* | 1..* | 1)
+;

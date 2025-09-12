@@ -1,0 +1,33 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1391115628768[ label="{ClassDiagram|}"]
+
+1391116155024[ label="{Object|}"]
+
+1391116154384[ label="{Class|}"]
+
+1391116133056[ label="{UpName|}"]
+
+1391116133664[ label="{LiteralUppercase|upperliterals: STRING\l}"]
+
+1391116266544[ label="{LiteralLowercase|lowerLiterals: STRING\l}"]
+
+
+
+1391115628768 -> 1391116155024[arrowtail=diamond, dir=both, headlabel="objects 0..*"]
+1391116155024 -> 1391116154384[arrowtail=diamond, dir=both, headlabel="objectType "]
+1391116154384 -> 1391116133056[arrowtail=diamond, dir=both, headlabel="classDef "]
+1391116133056 -> 1391116133664[arrowtail=diamond, dir=both, headlabel="upName "]
+
+}

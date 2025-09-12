@@ -1,0 +1,24 @@
+ClassDiagram:
+	objects *= Object 
+;
+
+Object:
+	objectType = Class
+;
+
+Class:
+	classDef = UpName
+;
+
+UpName:
+	upName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
+;
+
+LiteralUppercase:
+	upperliterals = /[A-Z]/
+;
+
+LiteralLowercase:
+	lowerLiterals = /[a-z]/
+;
+
