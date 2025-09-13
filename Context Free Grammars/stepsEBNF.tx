@@ -11,14 +11,8 @@ Class:
 ;
 
 UpName:
-	upName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
+	upName = /[A-Z][a-zA-Z]*\b/
 ;
 
-LiteralUppercase:
-	upperliterals = /[A-Z]/
-;
 
-LiteralLowercase:
-	lowerLiterals = /[a-z]/
-;
 
