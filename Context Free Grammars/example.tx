@@ -1,1 +1,4 @@
-ClasePrueba
+Persona:::
++nombre:String
+***
++hablar(dato:String):String

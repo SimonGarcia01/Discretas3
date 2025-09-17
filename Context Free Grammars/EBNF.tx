@@ -1,147 +1,63 @@
 ClassDiagram:
-	objects *= Object '<>' relation *= Relation 
+    objects += Object ('???' relation*=Relation)?
 ;
 
 Object:
-	objectType = (Class | Enum | Interface)
+    objectType = Class
 ;
 
 Class:
-	classDef = UpName ':::' Attributes '***' Methods
-;
-
-Enum:
-	enumDef = UpName '\L/' Literals
-;
-
-Interface:
-	interfaceDef = UpName 'Abstract Methods:' Methods
-;
-
-UpName:
-	upName = uppercaseName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
-;
-
-Attributes:
-	attributes *= Visibility LowName
-;
-
-LowName:
-	lowName = LiteralLowercase (LiteralLowercase|LiteralUppercase)*
-;
-
-Visibility:
-	visibility = ('+'|'-'|'#')
-;
-
-LiteralUppercase:
-	upperliterals = [A-Z]
-;
-
-LiteralLowercase:
-	lowerLiterals = [a-z]
-;
-
-Methods:
-	methods *= Visibility LowName '(' Parameters? ')' ':' Return
-;
-
-Parameters:
-	parameters *= DataType LowName (',' DataType LowName)*
-;
-
-DataType:
-	datatype = (int | String | double | long | float | char)
-;
-
-Return:
-	return = DataType
-;
-
-Literals:
-	literal *= LiteralUppercase [',']
+    name = UpName (':::' attributes*=Attribute)? ('***' methods*=Method)?  
 ;
 
 Relation:
-	start = [Class]
+	start = UpName
 	startMultiplicity = Multiplicity
 	type = RelationType
 	endMultiplicity = Multiplicity
-	end = [Class]
+	end = UpName
 ;
 
 RelationType:
-	relations = ('--->' | '---' | '---<>' | '---<*>')
+	relations = /--->|---|---<>|---<*>/
 ;
 
 Multiplicity:
-	multiplicities = (0..* | 1..* | 1)
+	multiplicities = /0..*|1..*|1/
 ;
 
-ClassDiagram:
-	objects *= Object '<>' relation *= Relation 
+Attribute:
+    visibility = Visibility name = LowName ':' type = DataType
 ;
 
-Object:
-	objectType = Class
-;
-
-Class:
-	classDef = UpName ':::' Attributes '***' Methods
-;
-
-UpName:
-	upName = uppercaseName = LiteralUppercase (LiteralLowercase|LiteralUppercase)*
-;
-
-Attributes:
-	attributes *= Visibility LowName
-;
-
-Methods:
-	methods *= Visibility LowName '(' Parameters? ')' ':' Return
-;
-
-LiteralUppercase:
-	upperliterals = [A-Z]
-;
-
-LiteralLowercase:
-	lowerLiterals = [a-z]
-;
-
-Visibility:
-	visibility = ('+'|'-'|'#')
-;
-
-LowName:
-	lowName = LiteralLowercase (LiteralLowercase|LiteralUppercase)*
+Method:
+    visibility = Visibility name = LowName '(' params = Parameters? ')' ':' returnType = Return
 ;
 
 Parameters:
-	parameters *= DataType LowName (',' DataType LowName)*
+    params += Param (',' params += Param)*
 ;
 
-Return:
-	return = DataType
+Param:
+    name = LowName ':' type = DataType
 ;
 
 DataType:
-	datatype = (int | String | double | long | float | char)
+    datatype = /int|String|double|long|float|char|void|boolean/
 ;
 
-Relation:
-	start = [Class]
-	startMultiplicity = Multiplicity
-	type = RelationType
-	endMultiplicity = Multiplicity
-	end = [Class]
+Return:
+    retorno = DataType
 ;
 
-RelationType:
-	relations = ('--->' | '---' | '---<>' | '---<*>')
+Visibility:
+    visibility = '+' | '-' | '#'
 ;
 
-Multiplicity:
-	multiplicities = (0..* | 1..* | 1)
+LowName:
+    lowName = /[a-z][a-zA-Z]*\b/
+;
+
+UpName:
+    upName = /[A-Z][a-zA-Z]*\b/
 ;
