@@ -1,0 +1,54 @@
+name: binary AND
+
+input: '1010 1100'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: X, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: X, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
