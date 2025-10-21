@@ -1,0 +1,71 @@
+name: seguimiento 3
+source code: |
+
+  input: '1111 111'
+  blank: ' '
+  start state: first-right
+  table:
+
+    first-right:
+      1: R
+      ' ': {R: second-right}
+      
+    second-right:
+      1: R
+      ' ': {L: delete}
+    
+    delete:
+      1: {write: ' ', L: back-option}
+    
+    back-option:
+      1: {L: return}
+      ' ': {L: answer}
+    
+    return:
+      1: L
+      ' ': {L: back-delete}
+      
+    back-delete:
+     ' ': L
+     1: {write: ' ', R: find-second}
+     
+    find-second:
+      ' ': R
+      1: {R: second-right}
+      
+    answer:
+      ' ': L
+      1: {write: ' ', L: find-start}
+      
+    find-start:
+      1: L
+      ' ': {L: found-answer}
+    
+    found-answer:
+      ' ': R
+
+
+  # Exercises:
+
+  # • Modify the machine to always halt on the leftmost digit
+  #   (regardless of the number's length).
+  #   Hint: add a state between carry and done.
+
+  # • Make a machine that adds 2 instead of 1.
+  #   Hint: 2 is '10' in binary, so the last digit is unaffected.
+  #   Alternative hint: chain together two copies of the machine from
+  #   the first exercise (renaming the states of the second copy).
+
+  # • Make a machine to subtract 1.
+  #   To simplify things, assume the input is always greater than 0.
+positions:
+  first-right: {x: 320.56, y: 391.11, fixed: false}
+  second-right: {x: 279.75, y: 251.53, fixed: false}
+  delete: {x: 478.28, y: 248.09}
+  back-option: {x: 478.71, y: 76.55}
+  return: {x: 355.13, y: 29.09}
+  back-delete: {x: 159.95, y: 39.67}
+  find-second: {x: 102.36, y: 214.1}
+  answer: {x: 627.44, y: 99.91}
+  find-start: {x: 660.56, y: 243.23}
+  found-answer: {x: 630.29, y: 363.18}
