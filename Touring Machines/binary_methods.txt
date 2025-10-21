@@ -1,0 +1,349 @@
+name: binary AND
+
+input: '10 11'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: X, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: X, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
+    
+name: binary OR
+
+input: '1000 0110'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: X, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: Y, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
+    
+name: binary XOR
+
+input: '1110 0110'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: X, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: Y, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
+    
+  
+name: binary NAND
+
+input: '1010 0110'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: Y, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: Y, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
+    
+  
+
+
+name: binary NOR
+
+input: '1010 0110'
+blank: ' '
+start state: first-right
+
+table:
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: Y, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: X, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': R
+    
+  
+name: binary three word AND
+
+input: '10 01 11'
+blank: ' '
+start state: start
+
+table:
+  start:
+    1: R
+    0: R
+    ' ': {R: first-right}
+  
+  first-right:
+    1: R
+    0: R
+    X: R
+    Y: R
+    ' ': {R: second-right}
+  
+  second-right:
+    1: R
+    0: R
+    ' ': {L: option}
+  
+  option:
+    0: {write: ' ', L: backZero}
+    1: {write: ' ', L: backOne}
+    ' ': {L: rewrite}
+  
+  backZero:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backZeroAnd}
+  
+  backZeroAnd:
+    0: {write: X, R: first-right}
+    1: {write: X, R: first-right}
+    X: L
+    Y: L
+    
+  backOne:
+    0: L
+    1: L
+    X: L
+    Y: L
+    ' ': {L: backOneAnd}
+  
+  backOneAnd:
+    0: {write: X, R: first-right}
+    1: {write: Y, R: first-right}
+    X: L
+    Y: L
+  
+  rewrite:
+    X: {write: 0, L: rewrite}
+    Y: {write: 1, L: rewrite}
+    ' ': {R: restart}
+  
+  restart:
+    0: {L: restart}
+    1: {L: restart}
+    ' ': {L: restart2}
+  
+  restart2:
+    0: {L: restart2}
+    1: {L: restart2}
+    ' ': {R: first-right}
