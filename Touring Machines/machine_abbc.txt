@@ -1,0 +1,30 @@
+##This machine is to read strings aibi+1ci
+input: 'abbc'
+blank: ' '
+start state: q0
+table:
+  q0:
+    a: {write: X, R: q1}
+    ' ': {write: ' ', R: q5}
+    Y: {write: Y, R: q4}
+  q1:
+    a: {write: a, R: q1}
+    Y: {write: Y, R: q1}
+    b: {write: Y, R: q2}
+  q2:
+    b: {write: b, R: q2}
+    Z: {write: Z, R: q2}
+    c: {write: Z, L: q3}
+  q3:
+    a: {write: a, L: q3}
+    b: {write: b, L: q3}
+    Y: {write: Y, L: q3}
+    Z: {write: Z, L: q3}
+    X: {write: X, R: q0}
+  q4:
+    Y: {write: Y, R: q4}
+    b: {write: Y, R: qi}
+  qi:
+    Z: {write: Z, R: qi}
+    ' ': {write: ' ', R: q5}
+  q5:
