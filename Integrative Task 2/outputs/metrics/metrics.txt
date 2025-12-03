@@ -1,0 +1,21 @@
+Metrics for dnn_model:
+  Accuracy:  0.7358
+  Precision: 0.7560
+  Recall:    0.7085
+  F1-score:  0.7315
+  Cohen kappa: 0.4719
+
+Metrics for rnn_model:
+  Accuracy:  0.7813
+  Precision: 0.7679
+  Recall:    0.8161
+  F1-score:  0.7913
+  Cohen kappa: 0.5621
+
+Metrics for lstm_model:
+  Accuracy:  0.7859
+  Precision: 0.7972
+  Recall:    0.7758
+  F1-score:  0.7864
+  Cohen kappa: 0.5718
+
