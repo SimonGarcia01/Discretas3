@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Best Social Media Moderator</title>
+    <link rel="shortcut icon" href="/static/icons/social-media.ico" />
+    <link rel="stylesheet" href="/static/css/preview.css">
+</head>
+<body>
+<div class = "editor">
+        <h2 class="subtitle" >Write your post</h2>
+        <br>
+        <textarea id="post-input" name="post" placeholder="Write your post"></textarea>
+</div>
+<br>
+<div class="container mt-4">
+    <div class="col-12 col-md-4 visualizer">
+        <h3 class="subtitle">Enhanced text</h3>
+        <div id="preview">
+            <em>Formatted post</em>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 visualizer">
+        <h3 class="subtitle">Censored text</h3>
+        <div id="preview_FST">
+            <em>Censored post</em>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 visualizer">
+        <h3 class="subtitle">Hashtags, links, mentions and emojis</h3>
+        <div id="preview_regex">
+            <em>Emojis, links, mentions and hashtags</em>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 visualizer">
+        <h3 class="subtitle">Classification</h3>
+        <div class="dfa">
+            <div id="statusBadge">
+               <b> <em>Safe</em></b>
+            </div>
+            <div id="classification_message">
+                <em>...</em>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/static/js/preview.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+Post:
+    elements*=Element
+;
+
+Element:
+    link=Link
+    | hashtag=Hashtag
+    | mention=Mention
+    | formula=Formula
+    | text=Text
+    | whitespace=Whitespace
+;
+
+Text:
+    content *= TextContent
+;
+
+TextContent:
+    bold=Bold
+    | italic=Italic
+    | underline=Underline
+    | strikethrough=Strikethrough
+    | emoji=Emoji
+    | rawtext=RawText
+    | whitespace=Whitespace
+;
+
+RawText:
+    value=/[a-zA-Z0-9\.\,\!\?\;\'\"\/\s\(\)]+/
+;
+
+Bold:
+    '*' value=RawText '*'
+;
+
+Italic:
+    '-' value=RawText '-'
+;
+
+Underline:
+    '{' value=RawText '}'
+;
+
+Strikethrough:
+    '~' value=RawText '~'
+;
+
+Emoji:
+    value=/:\(|:\)|:p|:o|:D|:/
+;
+
+Formula:
+    '$' value*=EquationParts '$'
+;
+
+EquationParts:
+    operator=Operator
+    | number=Number
+    | function=Function
+    | variable=Variable
+    | subscript=Subscript
+    | superscript=Superscript
+    | whitespace=Whitespace
+;
+
+Operator:
+    operator=/\=|\-|\*|\/|\+/
+;
+
+Number:
+    value=/[0-9]+/
+;
+
+Variable:
+    value=/[a-zA-Z]+/
+;
+
+Subscript:
+    '_(' value=NumberVariable ')'
+;
+
+Superscript:
+    '^(' value=NumberVariable')'
+;
+
+Function:
+    name=/[a-zA-Z]+/ '(' value=NumberVariable ')'
+;
+
+NumberVariable:
+    number=Number | variable=Variable
+;
+
+Hashtag:
+    '#' value=/[a-zA-Z0-9_]+/
+;
+
+Mention:
+    '@' value=/[a-zA-Z0-9_]+/
+;
+
+Link:
+    '<'value=/(https?:\/\/)?([a-zA-Z0-9\-\_\.]+)[a-zA-Z]{2,}(\/[a-zA-Z0-9\-\.\_\~\%\!\$\&\'\(\)\*\+\,\;\=\:\@\?\#]+)*/'>'
+;
+
+Whitespace:
+    value=/\s+/
+;
